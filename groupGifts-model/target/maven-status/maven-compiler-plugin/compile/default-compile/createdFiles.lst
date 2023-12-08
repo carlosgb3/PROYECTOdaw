@@ -1,0 +1,6 @@
+DAW\proyecto\mapper\UserModelMapper.class
+DAW\proyecto\repository\UserRepository.class
+DAW\proyecto\mapper\UserModelMapperImpl.class
+DAW\proyecto\model\User.class
+DAW\proyecto\model\User_.class
+DAW\proyecto\service\UserServiceImpl.class

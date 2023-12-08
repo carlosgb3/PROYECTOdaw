@@ -1,0 +1,1359 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+
+# ADMIN
+
+  /admin/{id}:
+    get:
+      tags:
+        - admin-controller
+      operationId: getAdmin
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminDto'
+    put:
+      tags:
+        - admin-controller
+      operationId: updateAdmin
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAdminDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminDto'
+    delete:
+      tags:
+        - admin-controller
+      operationId: removeAdmin
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminDto'
+    patch:
+      tags:
+        - admin-controller
+      operationId: PartialUpdateAdmin
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialUpdateAdminDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminDto'
+  /admin:
+    post:
+      tags:
+        - admin-controller
+      operationId: createAdmin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAdminDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminDto'
+  /admin/filter:
+    get:
+      tags:
+        - admin-controller
+      operationId: findAdmins
+      parameters:
+        - name: nick_name
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdminDto'
+  
+# USER 
+
+  /user/{id}:
+    get:
+      tags:
+        - user-controller
+      operationId: getUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+    put:
+      tags:
+        - user-controller
+      operationId: updateUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+    delete:
+      tags:
+        - user-controller
+      operationId: removeUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+    patch:
+      tags:
+        - user-controller
+      operationId: PartialUpdateUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialUpdateUserDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /user:
+    post:
+      tags:
+        - user-controller
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /user/filter:
+    get:
+      tags:
+        - user-controller
+      operationId: findUsers
+      parameters:
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: surame
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: nick_name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: pass
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: email
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+  
+  
+# GIFT
+
+  /gift/{id}:
+    get:
+      tags:
+        - gift-controller
+      operationId: getGift
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiftDto'
+    put:
+      tags:
+        - gift-controller
+      operationId: updateGift
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGiftDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiftDto'
+    delete:
+      tags:
+        - gift-controller
+      operationId: removeGift
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiftDto'
+    patch:
+      tags:
+        - gift-controller
+      operationId: PartialUpdateGift
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialUpdateGiftDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiftDto'
+  /gift:
+    post:
+      tags:
+        - gift-controller
+      operationId: createGift
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGiftDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiftDto'
+  /gift/filter:
+    get:
+      tags:
+        - gift-controller
+      operationId: findGifts
+      parameters:
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GiftDto'
+
+
+# CONTRIBUTION
+
+  /contribution/{id}:
+    get:
+      tags:
+        - contribution-controller
+      operationId: getContribution
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContributionDto'
+    put:
+      tags:
+        - contribution-controller
+      operationId: updateContribution
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateContributionDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContributionDto'
+    delete:
+      tags:
+        - contribution-controller
+      operationId: removeContribution
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:                       
+                $ref: '#/components/schemas/ContributionDto'
+    patch:
+      tags:
+        - contribution-controller
+      operationId: PartialUpdateContribution
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialUpdateContributionDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContributionDto'
+  /contribution:
+    post:
+      tags:
+        - contribution-controller
+      operationId: createContribution
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateContributionDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContributionDto'
+  /contribution/filter:
+    get:
+      tags:
+        - contribution-controller
+      operationId: findcontributions
+      parameters:
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: image
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: amount
+          in: query
+          required: false
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContributionDto'
+
+
+# GIVER
+
+  /giver/{id}:
+    get:
+      tags:
+        - giver-controller
+      operationId: getGiver
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiverDto'
+    put:
+      tags:
+        - giver-controller
+      operationId: updateGiver
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGiverDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiverDto'
+    delete:
+      tags:
+        - giver-controller
+      operationId: removeGiver
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiverDto'
+    patch:
+      tags:
+        - giver-controller
+      operationId: PartialUpdateGiver
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialUpdateGiverDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiverDto'
+  /giver:
+    post:
+      tags:
+        - giver-controller
+      operationId: createGiver
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGiverDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiverDto'
+  /giver/filter:
+    get:
+      tags:
+        - giver-controller
+      operationId: findGivers
+      parameters:
+        - name: id
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: type
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GiverDto'
+
+# USER_GIFT
+  /user_gift:
+    post:
+      tags:
+        - user_gift-controller
+      operationId: createUser_gift
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User_giftDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User_giftDto'
+    put:
+      tags:
+        - user_gift-controller
+      operationId: updateUser_gift
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User_giftDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User_giftDto'
+        '400':
+          description: Invalid User_gift params
+        '404':
+          description: User_giftDto not found
+    delete:
+      tags:
+        - user_gift-controller
+      operationId: removeChannel
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: gift_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+  /user_gift/filter:
+    get:
+      tags:
+        - user_gift-controller
+      operationId: findUser_gift
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: gift_id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User_giftDto'
+ 
+ # GIVER_CONTRIBUTION
+  /giver_contribution:
+    post:
+      tags:
+        - giver_contribution-controller
+      operationId: createGiver_contribution
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Giver_contributionDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Giver_contributionDto'
+    put:
+      tags:
+        - giver_contribution-controller
+      operationId: updateGiver_contribution
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Giver_contributionDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Giver_contributionDto'
+        '400':
+          description: Invalid Giver_contribution params
+        '404':
+          description: Giver_contribution not found
+    delete:
+      tags:
+        - giver_contribution-controller
+      operationId: removeGiver_contribution
+      parameters:
+        - name: giver_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: contribution_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+  /giver_contribution/filter:
+    get:
+      tags:
+        - giver_contribution-controller
+      operationId: findGiver_contribution
+      parameters:
+        - name: giver_id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: contribution_id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Giver_contributionDto'
+
+# GIFT_GIVER
+  /gift_giver:
+    post:
+      tags:
+        - gift_giver-controller
+      operationId: createGift_giver
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Gift_giverDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gift_giverDto'
+    put:
+      tags:
+        - gift_giver-controller
+      operationId: updateGift_giver
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Gift_giverDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gift_giverDto'
+        '400':
+          description: Invalid Gift_giver params
+        '404':
+          description: Gift_giver not found
+    delete:
+      tags:
+        - gift_giver-controller
+      operationId: removeGift_giver
+      parameters:
+        - name: gift_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: giver_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+  /gift_giver/filter:
+    get:
+      tags:
+        - gift_giver-controller
+      operationId: findGift_giver
+      parameters:
+        - name: giver_id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: gift_id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Gift_giverDto'
+  
+components:
+  schemas:
+
+# ADMIN
+    AdminDto:
+      required:
+        - nick_name
+        - pass
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nick_name:
+          type: string
+        pass:
+          type: string
+    UpdateAdminDto:
+      required:
+        - nick_name
+        - pass
+      type: object
+      properties:
+        nick_name:
+          type: string
+        pass:
+          type: string
+    CreateAdminDto:
+      required:
+        - nick_name
+        - pass
+      type: object
+      properties:
+        nick_name:
+          type: string
+        pass:
+          type: string
+    PartialUpdateAdminDto:
+      type: object
+      properties:
+        nick_name:
+          type: string
+        pass:
+          type: string
+
+# USER
+    UserDto:
+      required:
+        - name
+        - surname
+        - nick_name
+        - pass
+        - email
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        surame:
+          type: string
+        nick_name:
+          type: string
+        pass:
+          type: string
+        email:
+          type: string
+    UpdateUserDto:
+      required:
+        - name
+        - surname
+        - nick_name
+        - pass
+        - email
+      type: object
+      properties:
+        name:
+          type: string
+        surame:
+          type: string
+        nick_name:
+          type: string
+        pass:
+          type: string
+        email:
+          type: string
+    CreateUserDto:
+      required:
+        - name
+        - surname
+        - nick_name
+        - pass
+        - email
+      type: object
+      properties:
+        name:
+          type: string
+        surame:
+          type: string
+        nick_name:
+          type: string
+        pass:
+          type: string
+        email:
+          type: string
+    PartialUpdateUserDto:
+        type: object
+        properties:
+          name:
+            type: string
+          surame:
+            type: string
+          nick_name:
+            type: string
+          pass:
+            type: string
+          email:
+            type: string
+
+# GIFT
+    GiftDto:
+      required:
+        - name
+        - image
+        - start_date
+        - end_date
+        - price
+        - user_id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        image:
+          type: string
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        price:
+          type: number
+          format: float
+        user_id:
+          type: integer
+          format: int64
+    UpdateGiftDto:
+      required:
+        - name
+        - image
+        - start_date
+        - end_date
+        - price
+        - user_id
+      type: object
+      properties:
+        name:
+          type: string
+        image:
+          type: string
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        price:
+          type: number
+          format: float
+        user_id:
+          type: integer
+          format: int64
+    CreateGiftDto:
+      required:
+        - name
+        - image
+        - start_date
+        - end_date
+        - price
+        - user_id
+      type: object
+      properties:
+        name:
+          type: string
+        image:
+          type: string
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        price:
+          type: number
+          format: float
+        user_id:
+          type: integer
+          format: int64
+    PartialUpdateGiftDto:
+      properties:
+        name:
+          type: string
+        image:
+          type: string
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        price:
+          type: number
+          format: float
+        user_id:
+          type: integer
+          format: int64
+
+# CONTRIBUTION
+    ContributionDto:
+      required:
+        - id
+        - name
+        - img_path
+        - amount
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        img_path:
+          type: string
+        amount:
+          type: number
+          format: float
+    UpdateContributionDto:
+      required:
+        - name
+        - img_path
+        - amount
+      type: object
+      properties:
+        name:
+          type: string
+        img_path:
+          type: string
+        amount:
+          type: number
+          format: float
+    CreateContributionDto:
+      required:
+        - name
+        - img_path
+        - amount
+      type: object
+      properties:
+        name:
+          type: string
+        img_path:
+          type: string
+        amount:
+          type: number
+          format: float
+    PartialUpdateContributionDto:
+      type: object
+      properties:
+        name:
+          type: string
+        img_path:
+          type: string
+        amount:
+          type: number
+          format: float
+
+# GIVER
+    GiverDto:
+      required:
+        - id
+        - name
+        - surname
+        - email
+        - gift_id
+        - contribution_id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+        gift_id:
+          type: integer
+          format: int64
+        contribution_id:
+          type: integer
+          format: int64
+    UpdateGiverDto:
+      required:
+        - name
+        - surname
+        - email
+        - gift_id
+        - contribution_id
+      type: object
+      properties:
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+        gift_id:
+          type: integer
+          format: int64
+        contribution_id:
+          type: integer
+          format: int64
+    CreateGiverDto:
+      required:
+        - name
+        - surname
+        - email
+        - gift_id
+        - contribution_id
+      type: object
+      properties:
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+        gift_id:
+          type: integer
+          format: int64
+        contribution_id:
+          type: integer
+          format: int64
+    PartialUpdateGiverDto:
+      type: object
+      properties:
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+        gift_id:
+          type: integer
+          format: int64
+        contribution_id:
+          type: integer
+          format: int64
+
+# USER_GIFT
+    User_giftDto:
+      required:
+        - user_id
+        - gift_id
+      type: object
+      properties:
+        user_id:
+          type: integer
+          format: int64
+        gift_id:
+          type: integer
+          format: int64
+
+# GIVER_CONTRIBUTION
+    Giver_contributionDto:
+      required:
+        - giver_id
+        - contribution_id
+      type: object
+      properties:
+        giver_id:
+          type: integer
+          format: int64
+        contribution_id:
+          type: integer
+          format: int64
+
+# GIFT_GIVER
+    Gift_giverDto:
+      required:
+        - gift_id
+        - giver_id
+      type: object
+      properties:
+        gift_id:
+          type: integer
+          format: int64
+        giver_id:
+          type: integer
+          format: int64
+
+
